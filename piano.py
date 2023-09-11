@@ -8,7 +8,7 @@ root.configure(background='#80461B')
 root.resizable(False, False)
 
 
-# ------------upper
+# ------------UPPER FUNCTIONS-----------
 
 
 def playCS():
@@ -38,7 +38,8 @@ def playDS1():
     playsound('Audios/DS1.wav', False)
 
 
-# ----------------LOWER
+# ----------------LOWER FUNCTIONS-------------
+
 def playC():
     playsound('Audios/C.wav', False)
 
@@ -83,7 +84,8 @@ def playF1():
     playsound('Audios/F1.wav', False)
 
 
-# ------------Frame
+# ------------FRAME------------
+
 ABC = Frame(root, bg="#B87333", bd=20, relief=RIDGE)
 ABC.grid()
 ABC1 = Frame(ABC, bg="#B87333", bd=20, relief=RIDGE)
@@ -93,11 +95,11 @@ ABC2.grid()
 ABC3 = Frame(ABC, bg="#B87333", relief=RIDGE)
 ABC3.grid()
 
-# ----------Lables
+# ----------LABEL-----------
 Label(ABC1, text="-- Piano Player -- \n (11 Keyed Piano)", font=('Comic Sans MS', 25, 'bold'), padx=565, pady=8,
       bd=4, bg="#80461B", fg='white', justify=CENTER).grid(row=0, column=0, columnspan=11)
 
-# ---------------Buttons
+# ---------------BUTTONS----------
 btnCs = Button(ABC2, height=7, width=6, bd=4, text="\n\nC#\n\n\n (w)", font=(
     'arial', 18, 'bold'), bg="black", fg='white', command=playC)
 btnCs.grid(row=0, column=0, padx=5, pady=5)
@@ -181,7 +183,7 @@ btnF1 = Button(ABC3, height=10, width=6, bd=4, text="\n\n\n\nF1\n\n\n\n\n (m)", 
     'arial', 18, 'bold'), command=playF1)
 btnF1.grid(row=0, column=10, padx=5, pady=5)
 
-# ---------------lower
+# ---------------LOWER KEYBINDS----------
 root.bind('a', lambda event: playC())
 root.bind('s', lambda event: playD())
 root.bind('d', lambda event: playE())
@@ -193,7 +195,9 @@ root.bind('k', lambda event: playC1())
 root.bind('l', lambda event: playD1())
 root.bind('n', lambda event: playE1())
 root.bind('m', lambda event: playF1())
-# --------------upper
+
+# --------------UPPER KEYBINDS-------
+
 root.bind('w', lambda event: playCS())
 root.bind('e', lambda event: playDS())
 root.bind('r', lambda event: playFS())
