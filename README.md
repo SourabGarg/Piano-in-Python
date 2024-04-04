@@ -1,4 +1,4 @@
-# Piano-in-Python
+# Piano-in-Python (Flowing Notes)
 
 [Download Flowing Notes.exe](https://drive.google.com/uc?export=download&id=1__6vzVI3ltAQ1a1C0nnBcj5KJGoaypXz)
 
