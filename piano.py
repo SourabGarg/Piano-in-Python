@@ -1,32 +1,53 @@
+import sys
+import os
+
 from tkinter import *
 from playsound import playsound
 
-
 root = Tk()
-root.title("Piano")
-root.geometry('1530x755+0+0')
-root.configure(background='#80461B')
+root.title("Flowing Notes")
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+root.geometry(f"{screen_width}x{screen_height}+0+0")
+root.configure(background='#171716')
 root.resizable(False, False)
 
 
-def play_note(note):
-    playsound(f"Audios/{note}.wav", False)
+# While running as .py
+
+# def play_note(n):
+#     playsound(f"Audios/{n}.wav", False)
+#
+
+
+# While running as .exe
+def get_sound_file_path(filename):
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, "Audios", filename)
+
+
+def play_note(n):
+    sound_file_path = get_sound_file_path(f"{n}.wav")
+    playsound(sound_file_path, False)
 
 
 # ------------FRAME------------
 
-ABC = Frame(root, bg="#B87333", bd=20, relief=RIDGE)
+ABC = Frame(root, bg="#171716", bd=20, relief=RIDGE)
 ABC.grid()
-ABC1 = Frame(ABC, bg="#B87333", bd=20, relief=RIDGE)
+ABC1 = Frame(ABC, bg="#171716", bd=20, relief=RIDGE)
 ABC1.grid()
-ABC2 = Frame(ABC, bg="#B87333", relief=RIDGE)
+ABC2 = Frame(ABC, bg="#171716", relief=RIDGE)
 ABC2.grid()
-ABC3 = Frame(ABC, bg="#B87333", relief=RIDGE)
+ABC3 = Frame(ABC, bg="#171716", relief=RIDGE)
 ABC3.grid()
 
 # ----------LABEL-----------
-Label(ABC1, text="-- Piano Player -- \n (11 Keyed Piano)", font=('Comic Sans MS', 25, 'bold'), padx=565, pady=8,
-      bd=4, bg="#80461B", fg='white', justify=CENTER).grid(row=0, column=0, columnspan=11)
+Label(ABC1, text="--FLowing Notes-- \n (11 Keyed Piano)", font=('Comic Sans MS', 25, 'bold'), padx=555, pady=43,
+      bd=4, bg="#000000", fg='white', justify=CENTER).grid(row=0, column=0, columnspan=11)
 
 # ---------------BUTTONS----------
 btnCs = Button(ABC2, height=7, width=6, bd=4, text="\n\nC#\n\n\n w ", font=(
@@ -38,7 +59,7 @@ btnDs = Button(ABC2, height=7, width=6, bd=4, text="\n\nD#\n\n\n e ", font=(
 btnDs.grid(row=0, column=1, padx=5, pady=5)
 
 btnSpace2 = Button(ABC2, state=DISABLED, height=6,
-                   width=2, bg="#B87333", relief=FLAT)
+                   width=2, bg="#171716", relief=FLAT)
 btnSpace2.grid(row=0, column=3, padx=0, pady=0)
 
 btnFs = Button(ABC2, height=7, width=6, bd=4, text="\n\nF#\n\n\n r ", font=(
@@ -54,7 +75,7 @@ btnBb = Button(ABC2, height=7, width=6, bd=4, text="\n\nBb\n\n\n y ", font=(
 btnBb.grid(row=0, column=8, padx=5, pady=5)
 
 btnSpace5 = Button(ABC2, state=DISABLED, height=6,
-                   width=2, bg="#B87333", relief=FLAT)
+                   width=2, bg="#171716", relief=FLAT)
 btnSpace5.grid(row=0, column=7, padx=0, pady=0)
 
 btnCs1 = Button(ABC2, height=7, width=6, bd=4, text="\n\nC#1\n\n\n u ", font=(
@@ -134,6 +155,6 @@ key_bindings = {
 }
 
 for key, note in key_bindings.items():
-    root.bind(key, lambda event, note=note: play_note(note))
+    root.bind(key, lambda event, n=note: play_note(n))
 
 root.mainloop()
